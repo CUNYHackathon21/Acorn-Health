@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using AcornHealth.Api;
 
 namespace AcornHealth
 {
@@ -13,6 +15,15 @@ namespace AcornHealth
     {
         public static void Main(string[] args)
         {
+            var path = AppDomain.CurrentDomain.BaseDirectory + "sql.acorn";
+            if (!File.Exists(path)) {
+                Console.WriteLine("Missing sql.acorn file. Please create it.");
+                Console.ReadLine();
+                return;
+            }
+
+            Environment.SetEnvironmentVariable("sql", File.ReadAllText(path));\
+
             CreateHostBuilder(args).Build().Run();
         }
 
