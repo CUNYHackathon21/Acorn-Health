@@ -22,7 +22,7 @@ namespace AcornHealth
                 return;
             }
 
-            Environment.SetEnvironmentVariable("sql", File.ReadAllText(path));\
+            Environment.SetEnvironmentVariable("sql", File.ReadAllText(path));
 
             CreateHostBuilder(args).Build().Run();
         }
