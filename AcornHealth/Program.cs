@@ -16,13 +16,8 @@ namespace AcornHealth
         public static void Main(string[] args)
         {
             var path = AppDomain.CurrentDomain.BaseDirectory + "sql.acorn";
-            if (!File.Exists(path)) {
-                Console.WriteLine("Missing sql.acorn file. Please create it.");
-                Console.ReadLine();
-                return;
-            }
-
-            Environment.SetEnvironmentVariable("sql", File.ReadAllText(path));
+            var sqlData = File.ReadAllText(path);
+            Environment.SetEnvironmentVariable("sql", sqlData);
 
             CreateHostBuilder(args).Build().Run();
         }

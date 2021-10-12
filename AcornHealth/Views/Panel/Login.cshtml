@@ -1,12 +1,8 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    
-        ViewData["Title"] = "Login";
-  
+﻿@{
+    ViewData["Title"] = "Login";
 }
 
+@model AcornHealth.Models.Panel.LoginModel
 
 <section class="h-100 gradient-form" style="background-color: #eee;">
     <div class="container py-5 h-100">
@@ -17,32 +13,28 @@
                         <div class="col-lg-6">
                             <div class="card-body p-md-5 mx-md-4">
 
-                                
-
-                                <form>
+                                <form asp-controller="Panel" asp-action="Authenticate" method="post">
                                     <p>Please login to your account</p>
-
                                     <div class="form-outline mb-4">
-                                        <input type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address" />
+                                        <input type="email" id="form2Example11" asp-for="Username" class="form-control" placeholder="Phone number or email address" />
                                         <label class="form-label" for="form2Example11">Username</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form2Example22" class="form-control" />
+                                        <input type="password" id="form2Example22" asp-for="Password" class="form-control" />
                                         <label class="form-label" for="form2Example22">Password</label>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" value="Authenticate" type="submit">Log in</button>
                                         <a class="text-muted" href="#!">Forgot password?</a>
                                     </div>
-
-                                    <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <p class="mb-0 me-2">Don't have an account?</p>
-                                        <button type="button" class="btn btn-outline-danger" href="/home">Create new</button>
-                                    </div>
-
                                 </form>
+
+                                <div class="d-flex align-items-center justify-content-center pb-4">
+                                    <p class="mb-0 me-2">Don't have an account?</p>
+                                    <button type="button" class="btn btn-outline-danger" href="/home">Create new</button>
+                                </div>
 
                             </div>
                         </div>

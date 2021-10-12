@@ -1,3 +1,4 @@
+using AcornHealth.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,8 @@ namespace AcornHealth
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<Database>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
