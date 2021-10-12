@@ -1,4 +1,34 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿console.clear();
 
-// Write your JavaScript code.
+const app = (() => {
+	let body;
+	let menu;
+	let menuItems;
+
+	const init = () => {
+		body = document.querySelector('body');
+		menu = document.querySelector('.menu-icon');
+		menuItems = document.querySelectorAll('.nav__list-item');
+
+		applyListeners();
+	}
+
+	const applyListeners = () => {
+		menu.addEventListener('click', () => toggleClass(body, 'nav-active'));
+	}
+
+	const toggleClass = (element, stringClass) => {
+		if (element.classList.contains(stringClass))
+			element.classList.remove(stringClass);
+		else
+			element.classList.add(stringClass);
+	}
+
+	init();
+})();
+
+new TypeIt("#description", {
+	strings: "Visiting your doctor on a regular basis is key to a healthy life. Whether you're feeling the effects of the common cold or just coming in for a checkup, we want to make sure you have all...",
+	speed: 50,
+	waitUntilVisible: true,
+}).go();

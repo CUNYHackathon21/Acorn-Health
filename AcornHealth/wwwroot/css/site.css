@@ -1,117 +1,183 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-.gradient-custom {
-    /* fallback for old browsers */
-    background: #f6d365;
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
-}
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
-}
-
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Shadows+Into+Light&display=swap');
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    background-color: #1e2023;
+    font-family: "Fira Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+a{
+    color: black;
+}
 
-@media (min-width: 1025px) {
-    .h-custom {
-        height: 100vh !important;
+#description {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: -50%;
+    margin-left: 1%;
+    text-align: center;
+}
+
+.site-content {
+    max-width: 1100px;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-content__headline {
+    font-weight: 200;
+    color: #ffffff;
+    font-size: calc(4vw + 10px);
+    font-family: 'Shadows Into Light', cursive;
+    margin-top: -20%;
+}
+
+.menu-icon {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    z-index: 2;
+    left: 50px;
+    top: 30px;
+    cursor: pointer;
+}
+
+.menu-icon__line {
+    height: 2px;
+    width: 30px;
+    display: block;
+    background-color: #ffffff;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease, background-color 0.5s ease;
+}
+
+.menu-icon__line-left {
+    width: 15px;
+}
+
+.menu-icon__line-right {
+    width: 15px;
+    float: right;
+}
+
+.nav {
+    position: fixed;
+    z-index: 1;
+}
+
+    .nav:before, .nav:after {
+        content: "";
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(234, 234, 234, 0.2);
+        z-index: -1;
+        transition: transform cubic-bezier(0.77, 0, 0.175, 1) 0.8s;
+        transform: translateX(0%) translateY(-100%);
     }
-}
 
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
-}
-
-.card-registration .select-arrow {
-    top: 13px;
-}
-
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #a1c4fd;
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1));
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1))
-}
-
-.bg-indigo {
-    background-color: #4835d4;
-}
-
-@media (min-width: 992px) {
-    .card-registration-2 .bg-indigo {
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
+    .nav:after {
+        background: white;
+        transition-delay: 0s;
     }
+
+    .nav:before {
+        transition-delay: 0.1s;
+    }
+
+.nav__content {
+    position: fixed;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: calc(2vw + 10px);
+    font-weight: 200;
+    cursor: pointer;
 }
 
-@media (max-width: 991px) {
-    .card-registration-2 .bg-indigo {
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
+.nav__list-item {
+    position: relative;
+    display: inline-block;
+    transition-delay: 0.8s;
+    opacity: 0;
+    transform: translate(0%, 100%);
+    transition: opacity 0.2s ease, transform 0.3s ease;
+    margin-right: 25px;
 }
+
+    .nav__list-item:before {
+        content: "";
+        position: absolute;
+        background: #000000;
+        width: 20px;
+        height: 1px;
+        top: 100%;
+        transform: translate(0%, 0%);
+        transition: all 0.3s ease;
+        z-index: -1;
+    }
+
+    .nav__list-item:hover:before {
+        width: 100%;
+    }
+
+body.nav-active .menu-icon__line {
+    background-color: #000;
+    transform: translateX(0px) rotate(-45deg);
+}
+
+body.nav-active .menu-icon__line-left {
+    transform: translateX(1px) rotate(45deg);
+}
+
+body.nav-active .menu-icon__line-right {
+    transform: translateX(-2px) rotate(45deg);
+}
+
+body.nav-active .nav {
+    visibility: visible;
+}
+
+    body.nav-active .nav:before, body.nav-active .nav:after {
+        transform: translateX(0%) translateY(0%);
+    }
+
+    body.nav-active .nav:after {
+        transition-delay: 0.1s;
+    }
+
+    body.nav-active .nav:before {
+        transition-delay: 0s;
+    }
+
+body.nav-active .nav__list-item {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+    body.nav-active .nav__list-item:nth-child(0) {
+        transition-delay: 0.5s;
+    }
+
+    body.nav-active .nav__list-item:nth-child(1) {
+        transition-delay: 0.6s;
+    }
+
+    body.nav-active .nav__list-item:nth-child(2) {
+        transition-delay: 0.7s;
+    }
+
+    body.nav-active .nav__list-item:nth-child(3) {
+        transition-delay: 0.8s;
+    }
+
+    body.nav-active .nav__list-item:nth-child(4) {
+        transition-delay: 0.9s;
+    }
