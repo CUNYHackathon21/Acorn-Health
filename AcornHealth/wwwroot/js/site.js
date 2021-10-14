@@ -1,31 +1,21 @@
-﻿console.clear();
+﻿ $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
 
-const app = (() => {
-	let body;
-	let menu;
-	let menuItems;
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
 
-	const init = () => {
-		body = document.querySelector('body');
-		menu = document.querySelector('.menu-icon');
-		menuItems = document.querySelectorAll('.nav__list-item');
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+ });
 
-		applyListeners();
-	}
-
-	const applyListeners = () => {
-		menu.addEventListener('click', () => toggleClass(body, 'nav-active'));
-	}
-
-	const toggleClass = (element, stringClass) => {
-		if (element.classList.contains(stringClass))
-			element.classList.remove(stringClass);
-		else
-			element.classList.add(stringClass);
-	}
-
-	init();
-})();
 
 new TypeIt("#description", {
 	strings: "Visiting your doctor on a regular basis is key to a healthy life. Whether you're feeling the effects of the common cold or just coming in for a checkup, we want to make sure you have all...",
