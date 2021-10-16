@@ -16,14 +16,24 @@ namespace AcornHealth.Controllers {
         public IActionResult Login() {
             Debug.WriteLine("Loaded");
             return View();
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Authenticate(LoginModel model) {
-            var query = "INSERT into EMPLOYEES (Username, Password) VALUES (@username, @password)";
-            var result = Database.ExecuteQuery(query, model.Username, model.Password);
 
+            var query = "select loginUserName, loginPassword from Logins where loginUserName = @username and loginPassword = @password";
+            //var query = "INSERT into EMPLOYEES (Username, Password) VALUES (@username, @password)";
+            var result = Database.ExecuteQuery(query, model.Username, model.Password);
+            bool validLogin = result.HasRows;
+            if (validLogin)
+            {
+                return RedirectToAction("Profile","Home");
+            
+
+            }
+          
             Debug.WriteLine("Recived post.");
             return new ContentResult();
         }
